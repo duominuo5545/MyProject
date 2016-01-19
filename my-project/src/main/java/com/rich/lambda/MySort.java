@@ -4,9 +4,12 @@ import com.rich.lambda.Employee;
 import com.rich.lambda.FunctionImpl;
 
 import java.util.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -77,8 +80,8 @@ public class MySort {
         List<Employee> employees = new ArrayList<Employee>();
         int totalSalary = employees.stream().map(Employee::getSalary).reduce(0, (x, y) -> x + y);
         List<String> nameList = employees.stream().map(Employee::getName).collect(Collectors.toList());
-        double averageSalary = employees.stream().mapToInt(Employee::getSalary).average().getAsDouble();
-        averageSalary = employees.stream().collect(Collectors.averagingInt(Employee::getSalary));
+        //double averageSalary = employees.stream().mapToInt(Employee::getSalary).average().getAsDouble();
+        //averageSalary = employees.stream().collect(Collectors.averagingInt(Employee::getSalary));
         Map<Integer, List<Employee>> departEmployee = employees.stream().collect(Collectors.groupingBy(Employee::getDepartId));
         departEmployee.forEach(new BiConsumer<Integer, List<Employee>>() {
             @Override
@@ -89,6 +92,45 @@ public class MySort {
 
         departEmployee.forEach((k, v) -> System.out.println(k + ":" + v.stream().mapToInt(Employee::getSalary).average().getAsDouble()));
 
+        //Stream<Locale> locales = Stream.of(Locale.getAvailableLocales());
+        //Map<String, Set<Locale>> countryToLocales = locales.collect(Collectors.groupingBy(Locale::getCountry, Collectors.toSet()));
+        //Map<Boolean, List<Locale>> countryToLocales1 = locales.collect(Collectors.partitioningBy(x -> x.getLanguage().endsWith("en")));
 
+        List<String> wordList = new ArrayList<String>();
+        wordList.add("END");
+        System.out.println(wordList);
+        Stream<String> wordStreams = wordList.stream();
+        wordStreams.forEach(s -> {
+            if (s.length() > 12) wordList.remove(s);
+        });
+        System.out.println(wordList);
+        unchecked(new Callable() {
+            /**
+             * Computes a result, or throws an exception if unable to do so.
+             *
+             * @return computed result
+             * @throws Exception if unable to compute a result
+             */
+            @Override
+
+
+            public Object call() throws Exception {
+                return null;
+            }
+        });
+
+        List<Father> fatherList = new ArrayList<>();
+    }
+
+    public static <T> Supplier<T> unchecked(Callable<T> f) {
+        return () -> {
+            try {
+                return f.call();
+            } catch (Exception e) {
+                throw new RuntimeException();
+            } catch (Throwable t) {
+                throw t;
+            }
+        };
     }
 }
