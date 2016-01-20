@@ -118,8 +118,12 @@ public class MySort {
                 return null;
             }
         });
-
         List<Father> fatherList = new ArrayList<>();
+        String[] array = {"a", "b", "c"};
+        Integer[] intArray = {1, 2, 3};
+        for (final Integer i : intArray) {
+            Stream.of(array).map(item -> intArray + i.toString()).forEach(System.out::println);
+        }
     }
 
     public static <T> Supplier<T> unchecked(Callable<T> f) {
