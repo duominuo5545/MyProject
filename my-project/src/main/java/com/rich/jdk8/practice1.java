@@ -1,20 +1,9 @@
-package com.rich.lambda;
-
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FilenameFilter;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+package com.rich.jdk8;
 
 /**
- * Created by hanwang206326 on 16/1/17.
+ * Created by hanwang206326 on 16/1/21.
  */
-public class MyLambda {
+public class practice1 {
     public static void main(String[] args) {
         //1
         /*String[] arrayStr = {"a", "b", "c", "d", "e"};
@@ -63,8 +52,5 @@ public class MyLambda {
         for (Runnable runnable : runners) {
             runnable.run();
         }*/
-        //9
-        Collection2<String> aaa = new Collection2Impl<>();
-
     }
 }
