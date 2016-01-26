@@ -4,10 +4,7 @@ import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.LongUnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
+import java.util.stream.*;
 
 /**
  * Created by hanwang206326 on 16/1/21.
@@ -33,13 +30,13 @@ public class practice2 {
         IntStream.range(0, temp.length()).boxed().map((x) -> temp.charAt(x)).forEach(System.out::println);*/
         //8
         //9
-        ArrayList<String> test1 = new ArrayList<>();
+        /*ArrayList<String> test1 = new ArrayList<>();
         test1.add("test1");
         ArrayList<String> test2 = new ArrayList<>();
         test2.add("test2");
         ArrayList<String> test3 = new ArrayList<>();
         test2.add("test3");
-        Stream<ArrayList<String>> stream = Stream.of(test1, test2, test3);
+        Stream<ArrayList<String>> stream = Stream.of(test1, test2, test3);*/
         /*Optional<ArrayList<String>> a1 = stream.reduce((x, y) -> {
             x.addAll(y);
             return x;
@@ -60,5 +57,10 @@ public class practice2 {
             }
         });
         a3.stream().forEach(System.out::println);*/
+        //10
+        Stream<Double> stream = Stream.of(1d, 2d, 3d, 4d);
+        DoubleStream doubleStream = DoubleStream.of(1d, 2d, 3d, 4d);
+        DoubleSummaryStatistics doubleSummaryStatistics = doubleStream.summaryStatistics();
+        System.out.println(doubleSummaryStatistics.getAverage());
     }
 }
