@@ -1,14 +1,34 @@
 package com.rich;
 
+
+import org.junit.Test;
 import org.redisson.Config;
 import org.redisson.Redisson;
 import org.redisson.core.RLock;
 
 /**
- * Created by hanwang206326 on 16/1/12.
+ * Created by hanwang206326 on 2016/2/16.
  */
-public class MyRedisson {
-    public static void main(String[] args) throws InterruptedException {
+public class MyRedissonTest {
+
+    @Test
+    public void test1() throws Exception {
+        Config config = new Config();
+        config.useSingleServer().setTimeout(3000).setAddress("10.2.136.90:6379");
+        Redisson redisson = Redisson.create(config);
+        RLock lock = redisson.getLock("testRedisson");
+        lock.lock();
+        Thread.sleep(200000);
+        try {
+            System.out.println("Hello World");
+        } finally {
+            lock.unlock();
+        }
+        redisson.shutdown();
+    }
+
+    @Test
+    public void test2() throws Exception {
         Config config = new Config();
         config.useSingleServer().setTimeout(3000).setAddress("10.2.136.90:6379");
         Redisson redisson = Redisson.create(config);
@@ -36,4 +56,5 @@ public class MyRedisson {
         }
         redisson.shutdown();
     }
+
 }
