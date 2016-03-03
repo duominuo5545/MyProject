@@ -17,20 +17,6 @@ public class MyCglibProxy implements MethodInterceptor {
         this.name = name;
     }
 
-    /**
-     * 根据class对象创建该对象的代理对象
-     * 1、设置父类；2、设置回调
-     * 本质：动态创建了一个class对象的子类
-     *
-     * @param cls
-     * @return
-     */
-    public Object getDaoBean(Class cls) {
-        enhancer.setSuperclass(cls);
-        enhancer.setCallback(this);
-        return enhancer.create();
-    }
-
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
         System.out.println("调用的方法是：" + method.getName());
