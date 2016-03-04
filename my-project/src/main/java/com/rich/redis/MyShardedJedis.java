@@ -1,4 +1,4 @@
-package com.rich;
+package com.rich.redis;
 
 import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.jedis.JedisShardInfo;
@@ -12,7 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * Created by hanwang206326 on 16/1/12.
  */
-public class MyJedis {
+public class MyShardedJedis {
     private static ReentrantLock lock = new ReentrantLock();
     private static ShardedJedisPool pool;
 

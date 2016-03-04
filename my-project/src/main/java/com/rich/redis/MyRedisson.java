@@ -1,4 +1,4 @@
-package com.rich;
+package com.rich.redis;
 
 import org.redisson.Config;
 import org.redisson.Redisson;
