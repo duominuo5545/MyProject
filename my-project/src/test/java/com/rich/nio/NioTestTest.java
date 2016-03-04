@@ -10,11 +10,12 @@ import java.nio.channels.*;
 import java.util.Iterator;
 import java.util.Set;
 
+import static org.junit.Assert.*;
+
 /**
- * Created by hanwang206326 on 2016/2/22.
- * new IO
+ * Created by hanwang206326 on 2016/3/4.
  */
-public class NioTest {
+public class NioTestTest {
     @Test
     public void test() throws IOException {
         RandomAccessFile accessFile = new RandomAccessFile("D:\\nio-data.txt", "rw");

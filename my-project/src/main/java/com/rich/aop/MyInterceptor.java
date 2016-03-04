@@ -2,11 +2,13 @@ package com.rich.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by hanwang206326 on 2016/3/3.
  */
 @Aspect
+@Service
 public class MyInterceptor {
     @Pointcut("execution(* com.rich.aop.MyAopInterfaceImpl.*(..))")
     private void anyMethod() { //定义一个切入点

@@ -1,13 +1,12 @@
 package com.rich;
 
-
 import org.junit.Test;
 import org.redisson.Config;
 import org.redisson.Redisson;
 import org.redisson.core.RLock;
 
 /**
- * Created by hanwang206326 on 2016/2/16.
+ * Created by hanwang206326 on 2016/3/4.
  */
 public class MyRedissonTest {
 
@@ -56,5 +55,4 @@ public class MyRedissonTest {
         }
         redisson.shutdown();
     }
-
 }
