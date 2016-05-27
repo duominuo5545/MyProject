@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class MyAopInterfaceImpl implements MyAopInterface {
     @Override
-    public void create() {
-        System.out.println("create() is running");
+    public void create(String test) throws Exception {
+        if (1 == 1) {
+            throw new Exception("test");
+        }
+        System.out.println("create() is " + test);
     }
 }
