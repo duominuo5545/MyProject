@@ -33,9 +33,16 @@ public class MySpark {
         }).reduceByKey(new Function2<Integer, Integer, Integer>() {
             @Override
             public Integer call(Integer integer, Integer integer2) throws Exception {
-                System.out.println(integer + integer2);
                 return integer + integer2;
             }
         });
+        System.out.println(counts.collect());
+
+        /*JavaRDD<String> lines1 = sc.parallelize(Arrays.asList("pandas", "i like pandas"));
+
+        JavaRDD<String> lines2 = sc.textFile("/user/hanwang206326/test.txt");
+        JavaRDD<String> errorRDD = lines2.filter((x) -> {
+            return x.contains("error");
+        });*/
     }
 }
