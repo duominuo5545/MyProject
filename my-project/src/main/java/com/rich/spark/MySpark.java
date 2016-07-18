@@ -16,9 +16,10 @@ import java.util.Arrays;
  */
 public class MySpark {
     public static void main(String[] args) {
+        //SparkConf conf = new SparkConf().setMaster("local").setAppName("wordCount");
         SparkConf conf = new SparkConf().setMaster("local").setAppName("wordCount");
         JavaSparkContext sc = new JavaSparkContext(conf);
-        JavaRDD<String> input = sc.textFile(args[0]);
+        JavaRDD<String> input = sc.textFile("/Users/rich/gitignore");
         JavaRDD<String> words = input.flatMap(new FlatMapFunction<String, String>() {
             @Override
             public Iterable<String> call(String s) throws Exception {
@@ -38,11 +39,14 @@ public class MySpark {
         });
         System.out.println(counts.collect());
 
-        /*JavaRDD<String> lines1 = sc.parallelize(Arrays.asList("pandas", "i like pandas"));
+        JavaRDD<String> lines1 = sc.parallelize(Arrays.asList("pandas", "i like pandas"));
 
         JavaRDD<String> lines2 = sc.textFile("/user/hanwang206326/test.txt");
         JavaRDD<String> errorRDD = lines2.filter((x) -> {
             return x.contains("error");
-        });*/
+        });
+        JavaPairRDD<String, String> pairRDD = lines1.mapToPair(s -> {
+            return new Tuple2<String, String>(s.split(" ")[0], s);
+        });
     }
 }
